@@ -34,7 +34,7 @@ class Spacial_IRNN(nn.Module):
         self.down_weight.weight = nn.Parameter(torch.tensor([[[[alpha]]]] * in_channels))
 
     def forward(self, input):
-        return irnn()(input, self.up_weight.weight, self.right_weight.weight, self.down_weight.weight,
+        return irnn.apply(input, self.up_weight.weight, self.right_weight.weight, self.down_weight.weight,
                       self.left_weight.weight, self.up_weight.bias, self.right_weight.bias, self.down_weight.bias,
                       self.left_weight.bias)
 

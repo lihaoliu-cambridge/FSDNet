@@ -13,7 +13,7 @@ IRNNBackward = open('./IRNN_Backward_cuda.cu','r').read()
 # IRNNWeightBaisBackward = open('./IRNN_Weight_Bias_Backward_cuda.cu','r').read()
 
 
-@cupy.util.memoize(for_each_device=True)
+@cupy.memoize(for_each_device=True)
 def cunnex(strFunction):
 	return cupy.cuda.compile_with_cache(globals()[strFunction]).get_function(strFunction)
 # end
